@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
+import { api_token } from "../key";
 
 function BugFixing() {
 
@@ -9,7 +10,7 @@ function BugFixing() {
     const [loading, setLoading] = useState(false);
   
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: api_token,
     });
   
     const openai = new OpenAIApi(configuration);

@@ -1,39 +1,44 @@
 import React, { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
+import { api_token } from "../key";
+
 function Asking() {
   const [content, setContent] = useState("");
   const [createContent, setCreateContent] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const configuration = new Configuration({
-    apiKey:"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",
+  const openai = new OpenAI({
+    apiKey: process.env.REACT_APP_API_KEY,
+    dangerouslyAllowBrowser: true
   });
-  const openai = new OpenAIApi(configuration);
 
   const generateContent = async () => {
     setCreateContent("");
     setLoading(true);
 
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: content,
-      temperature: 0.3,
-      max_tokens: 3500,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: content,  }],
     });
-    setCreateContent(response.data.choices[0].text);
+    setCreateContent(response.choices[0].message.content);
     setLoading(false);
   };
 
   return (
     <>
-      {loading ? <h4 className="text-light text-center mt-5">Loading</h4> : <></>}
+      {loading ? (
+        <h4 className="text-light text-center mt-5">Loading</h4>
+      ) : (
+        <></>
+      )}
       {createContent.length > 0 ? (
         <center>
-          
-          <textarea className="text-light border-none mt-5 bg-dark lg" rows="15" cols="32" value={createContent}></textarea>
+          <textarea
+            className="text-light border-none mt-5 bg-dark lg"
+            rows="15"
+            cols="32"
+            value={createContent}
+          ></textarea>
         </center>
       ) : (
         <></>

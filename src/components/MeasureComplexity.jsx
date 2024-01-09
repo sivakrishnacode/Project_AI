@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
+import { api_token } from "../key";
 
 function MeasureComplexity() {
   const [code, setCode] = useState("\nPaste Source code Here\n\n\nThe time complexity is");
@@ -7,7 +8,7 @@ function MeasureComplexity() {
   const [loading, setLoading] = useState(false);
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: api_token,
   });
   const openai = new OpenAIApi(configuration);
   const calculateComplexity = async () => {

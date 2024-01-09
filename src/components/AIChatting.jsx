@@ -1,14 +1,16 @@
 import React from 'react'
 import { Configuration, OpenAIApi } from "openai";
 import { useState } from "react";
+import { api_token } from '../key';
 function AIChatting() {
     const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
   const [bot, setBot] = useState("");
   const [loading, setLoading] = useState(false);
 
+  console.log(api_token);
     const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: api_token,
       });
       const openai = new OpenAIApi(configuration);
 
