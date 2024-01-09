@@ -7,7 +7,7 @@ function MeasureComplexity() {
   const [loading, setLoading] = useState(false);
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
   const calculateComplexity = async () => {
