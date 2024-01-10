@@ -22,7 +22,10 @@ function GenerateImage() {
     const response = await ai.images.generate({
       prompt: imgGenerate,
       size: '1024x1024',
-      n: 1
+      n: 1,
+      model: 'dall-e-2',
+      quality:'standard',
+      
     })
 
     setImage(response.data[0].url);
