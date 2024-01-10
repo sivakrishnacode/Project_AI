@@ -18,11 +18,11 @@ function NavBar() {
           <Nav>
             <NavDropdown title="AI Generators" id="collasible-nav-dropdown">
               <NavDropdown.Item>
-                <Link to="/" className="text-dark text-decoration-none">
+                <Link to="/image" className="text-dark text-decoration-none">
                   Image Generator
                 </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item>
+              {/* <NavDropdown.Item>
                 <Link to="/jsbot" className="text-dark text-decoration-none">
                   JavaScript Bot
                 </Link>
@@ -54,11 +54,11 @@ function NavBar() {
                 <Link to="/ques" className="text-dark text-decoration-none">
                   Q&A
                 </Link>
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
 
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <Link to="/ask" className="text-dark text-decoration-none">
+                <Link to="/" className="text-dark text-decoration-none">
                   Ask Anything
                 </Link>
               </NavDropdown.Item>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
+import openai from "openai";
 import Spinner from "react-bootstrap/Spinner";
 import { api_token } from "../key";
 
@@ -11,20 +11,21 @@ function GenerateImage() {
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const configuration = new Configuration({
+  const ai = new openai({
     apiKey : process.env.REACT_APP_API_KEY,
+    dangerouslyAllowBrowser: true,
   });
-  const openai = new OpenAIApi(configuration);
+
   const generateImage = async () => {
     setImage("");
     setLoading(true);
-    const response = await openai.createImage({
+    const response = await ai.images.generate({
       prompt: imgGenerate,
-      n: 1,
-      size: "1024x1024",
-    });
+      size: '1024x1024',
+      n: 1
+    })
 
-    setImage(response.data.data[0].url);
+    setImage(response.data[0].url);
     setLoading(false);
   };
 
