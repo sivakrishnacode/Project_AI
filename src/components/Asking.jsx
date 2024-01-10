@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import OpenAI from "openai";
-import { api_token } from "../key";
 
 function Asking() {
   const [content, setContent] = useState("");
